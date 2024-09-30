@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let jsonText = '{ "name": "Someone else", "lastName": "Kim" }';  // JSON 형식의 문자열
+
+    console.log("json : " , jsonText)
+
+    let jsText = JSON.parse(jsonText);
+    console.log("jscode : " , jsText)
+
+    jsonText = JSON.stringify(jsText)
+    //네트워크 전송하는 코드가 존재
+    console.log("json code : " , jsonText);
+
+    /*
+    let realObject = JSON.parse(jsonText);
+    let jsonText2 = JSON.stringify(realObject);
+
+    console.log(realObject);
+    console.log(jsonText2); 
+    */
+  </script>
+</body>
+</html>

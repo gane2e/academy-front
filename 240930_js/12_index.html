@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="dooly">DOM 프로그래밍</h1>
+  <hr>
+  <button onclick="updateTitle()">제목변경</button>
+  <button onclick="updateColor()">컬러변경</button>
+  <button onclick="updateImage()">이미지변경</button> <br>
+  <img id="duke" src="/240930_js/images/1.jpg" alt="" width="200">
+  <script>
+
+    function updateTitle(){
+      const dom = document.getElementById("dooly");
+      const msg = window.prompt("제목을 입력하세요.");
+      dom.textContent = msg;
+    }
+    function updateColor(){
+      const dom = document.getElementById("dooly");
+      const randomValue =  Math.random();
+      const colorcode = '#'+ Math.round( randomValue * 0xffffff ).toString(16);
+      console.log(colorcode);
+      dom.style.color = colorcode;
+    }
+    function updateImage(){
+      const dom = document.getElementById("duke");
+      const randomValue = Math.random();
+      const imageName = Math.floor( randomValue * 10 ) + 1;
+      dom.src = "/240930_js/images/"+ imageName +".jpg"
+    }
+
+  </script>
+</body>
+</html>

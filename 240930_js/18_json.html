@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Create Object from JSON String</h2>
+  <p id="demo"></p>
+
+  <script>
+    let txt = '{"name" : "john", "age": 30 , "city" : "New York"}';
+
+    let jsCode = JSON.parse(txt);
+    console.log(jsCode.name);
+
+    document.getElementById("demo").innerHTML = txt.name + ", " + txt.age + ", " + txt.city
+  </script>
+</body>
+</html>

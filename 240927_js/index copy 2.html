@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function(){
+    document.querySelector('button').addEventListener('click', function(){
+      document.querySelector(".test").style.display = 'none'
+    })
+  })
+
+    /*
+  document.addEventListener("DOMContentLoaded", function(){
+    document.querySelector('botton').addEventListener('click', function(){
+        document.querySelector(".test").style.display = 'none';
+      });
+    });
+    */
+
+    window.onload = () => {
+      document.querySelector('botton').onclick = () => {
+        document.querySelector(".test").style.display = 'none';
+      } 
+    }
+
+  /* 제이쿼리
+    test가 선택자
+    $(document).ready(function(){
+      $("button").click(function(){
+        $(".test").hide();
+  });
+})
+  */
+</script>
+</head>
+<body>
+
+<h2 class="test">선택자</h2>
+
+<button>Click me</button>
+
+</body>
+</html>
