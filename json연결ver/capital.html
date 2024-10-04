@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
@@ -9,15 +10,17 @@
   <link rel="stylesheet" href="css/slide.css">
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./css/modal.css">
+  <script src="js/modal.js"></script>
   <script>
 
-    $(function() {
+    $(function () {
       $.ajax({
         url: "./json/catecory.json",
-        dataType : "json",
-        success : function(data) {
-          
-          if(data.length > 0) {
+        dataType: "json",
+        success: function (data) {
+
+          if (data.length > 0) {
             for (let i in data) {
 
               $(".catecory").eq(i).prepend("<a><img src='" + data[i].url + "' class='icon'></a>");
@@ -28,33 +31,33 @@
       });
     });
 
-    $(function() {
+    $(function () {
       $.ajax({
         url: "./json/sliderImg.json",
-        dataType : "json",
-        success : function(data) {
-          
-          if(data.length > 0) {
+        dataType: "json",
+        success: function (data) {
+
+          if (data.length > 0) {
             for (let i in data) {
 
-              $(".swiper-slide").eq(i).prepend("<a><img src='" + data[i].url + "'/></a>" );
-              
+              $(".swiper-slide").eq(i).prepend("<a><img src='" + data[i].url + "'/></a>");
+
             }
           }
         }
       });
     });
 
-    $(function() {
+    $(function () {
       $.ajax({
         url: "./json/list_1.json",
-        dataType : "json",
-        success : function(data) {
-          
-          if(data.length > 0) {
+        dataType: "json",
+        success: function (data) {
+
+          if (data.length > 0) {
             for (let i in data) {
 
-              $(".jsonImg").eq(i).prepend("<img src='" + data[i].url + "'/>" );
+              $(".jsonImg").eq(i).prepend("<img src='" + data[i].url + "'/>");
               $(".list-name").eq(i).append('<p class="list-title">' + data[i].title + '</p>')
               $(".list-name").eq(i).append('<span>' + data[i].price + '</span>')
             }
@@ -63,29 +66,29 @@
       });
     });
 
-    $(function() {
+    $(function () {
       $.ajax({
         url: "./json/list_2.json",
-        dataType : "json",
-        success : function(data) {
-          
-          if(data.length > 0) {
+        dataType: "json",
+        success: function (data) {
+
+          if (data.length > 0) {
             for (let i in data) {
 
-              $(".jsonImg2").eq(i).prepend("<img src='" + data[i].url + "'/>" );
+              $(".jsonImg2").eq(i).prepend("<img src='" + data[i].url + "'/>");
               $(".list-name2").eq(i).append('<p class="list-title">' + data[i].title + '</p>')
               $(".list-name2").eq(i).append('<p class="before-price">' + data[i]["before-price"] + '</p>')
               $(".list-name2").eq(i).append('<span class="discount">' + data[i].discount + '</span>')
               $(".list-name2").eq(i).append('<span class="after-price">' + data[i]["after-price"] + '</span>')
             }
           }
-        }, error: function(jqXHR, textStatus, errorThrown) {
+        }, error: function (jqXHR, textStatus, errorThrown) {
           console.error("Error loading JSON:", textStatus, errorThrown);
-          }
+        }
       });
     });
   </script>
- 
+
 <body>
   <!-- 상단배너 -->
   <div id="top_banner-area">
@@ -93,6 +96,9 @@
   </div>
 
   <header>
+
+
+
     <div id="logo"><a href="#"><img src="./img/헤더로고.png" alt=""></a></div>
     <nav>
       <div id="nav-container">
@@ -100,33 +106,75 @@
           <li><a href="#">쇼핑하기</a></li>
           <li><a href="#">배송안내</a></li>
           <li><a href="#">이벤트</a></li>
-          <li><div style="width: 1px;
+          <li>
+            <div style="width: 1px;
             height: 16px;
             background-color: white;
             float: left;
-            margin: 0 10px;"></div></li>
+            margin: 0 10px;"></div>
+          </li>
           <li><a href="#">선물하기
-            <img src="../★img3/new.png" alt="" width="15px"></a></li>
+              <img src="../★img3/new.png" alt="" width="15px"></a></li>
         </ul>
         <div id="navigation-right">
           <ul>
             <li><a href="#">공지사항</a></li>
             <li><a href="#">고객센터</a></li>
-            <li><div style="width: 1px;
+            <li>
+              <div style="width: 1px;
               height: 12px;
               background-color: white;
               float: left;
-              margin: 1px 10px 0 10px"></div></li>
+              margin: 1px 10px 0 10px"></div>
+            </li>
             <li><a href="#">로그인</a></li>
-            <li><a href="#" style="margin-right: 10px;">회원가입</a></li>
-          </ul>
-          <a href="#">
-            <img src="./img/cart.svg" alt="">
-          </a>
-          <a href="#">
-            <img src="./img/sitemap.svg" alt="">
-          </a>
+            <!-- 팝업열기 버튼 -->
+            <li><a href="#" 
+              style="margin-right: 10px;" 
+              onClick="modal('dialog')">팝업열기</a></li>
+
+            <!--모달팝업 -->
+            <div id="dialog" class="dialog" >
+              <div class="tb">
+                <div class="inner" style="max-width:800px;">
+                  <div class=" top">
+                  <div class="title">모달창 제목</div>
+                  <a href="#" class="modal-close" 
+                  style="color: black;">닫기</a>
+                </div>
+                <div class="ct">
+                  모달 창 내용
+                </div>
+              </div>
+            </div>
         </div>
+
+        <!-- 모달팝업 -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+          //모달 열기
+          function modal(id) {
+            $("#" + id).fadeIn()
+          }
+          //모달 닫기
+          $(document).ready(function () {
+            $('.modal-close').on('click', function (e) {
+              e.preventDefault();
+              const modal = $(this).closest('.dialog');
+              modal.fadeOut();
+            });
+          });
+        </script>
+
+        </ul>
+        <a href="#">
+          <img src="./img/cart.svg" alt="">
+        </a>
+        <a href="#">
+          <img src="./img/sitemap.svg" alt="">
+        </a>
+      </div>
       </div>
     </nav>
   </header>
@@ -169,7 +217,7 @@
   <section>
     <h1 id="catecory-h1">
       <span class="spacing">초신선</span>
-       식재료 둘러보기
+      식재료 둘러보기
     </h1>
 
     <div class="list-category">
@@ -185,73 +233,79 @@
         <li class="catecory"></li>
       </ul>
     </div>
-    
+
   </section>
 
   <!-- 상품 리스트 1-->
   <section id="section2">
     <h2>간편식으로 명절 증후군 극복!</h2>
     <p>밀키트&간편식 10% 쿠폰 증정(~9/27)</p>
-        <ul>
-          
-          <li class="slide-list">
-            <a href="#" class="jsonImg">
-              <div class="list-name"></div>
-            </a>
-          </li>
+    <ul>
 
-          <li class="slide-list">
-            <a href="#" class="jsonImg">
-              <div class="list-name"></div>
-            </a>
-          </li>
+      <li class="slide-list">
+        <a href="#" class="jsonImg">
+          <div class="list-name"></div>
+        </a>
+      </li>
 
-           <li class="slide-list">
-            <a href="#" class="jsonImg">
-               <div class="list-name"></div>
-            </a>
-          </li>
+      <li class="slide-list">
+        <a href="#" class="jsonImg">
+          <div class="list-name"></div>
+        </a>
+      </li>
 
-           <li class="slide-list">
-            <a href="#" class="jsonImg">
-               <div class="list-name"></div>
-            </a>
-          </li>
+      <li class="slide-list">
+        <a href="#" class="jsonImg">
+          <div class="list-name"></div>
+        </a>
+      </li>
+
+      <li class="slide-list">
+        <a href="#" class="jsonImg">
+          <div class="list-name"></div>
+        </a>
+      </li>
 
 
-          </ul>
+    </ul>
   </section>
 
-<!-- 컨텐츠영역 -->
+  <!-- 컨텐츠영역 -->
   <section id="section3">
     <div class="section3-size">
 
       <h2>오늘 갓 짜낸 초신선 우유</h2>
-        <img src="https://sajygdev.blob.core.windows.net/$web/open_assets/marketing/curation/SPOT/web-curation-single-240912-01.png" alt="">
-        <div class="right-section">
+      <img
+        src="https://sajygdev.blob.core.windows.net/$web/open_assets/marketing/curation/SPOT/web-curation-single-240912-01.png"
+        alt="">
+      <div class="right-section">
 
-          <p class="overlay-text">착유한지 1일 이내의 초신선 무항생제 우유를 담아보세요.</p>
-          <div class="container">
-            <a href="#" id="main">
-              <img src="https://sajygdev.blob.core.windows.net/$web/standard_assets/s3/jyg-custom-seoul-app/frontend/thumbnails/transparent_background/milk-fresh-list.png" alt="">
-            </a>
+        <p class="overlay-text">착유한지 1일 이내의 초신선 무항생제 우유를 담아보세요.</p>
+        <div class="container">
+          <a href="#" id="main">
+            <img
+              src="https://sajygdev.blob.core.windows.net/$web/standard_assets/s3/jyg-custom-seoul-app/frontend/thumbnails/transparent_background/milk-fresh-list.png"
+              alt="">
+          </a>
 
-            <p>초신선 무항생제 우유 900ml</p>
-            <span>4,300원</span>
+          <p>초신선 무항생제 우유 900ml</p>
+          <span>4,300원</span>
 
-            <a href="#" id="main-cart">
-              <img data-v-5dd5832e="" src="./img/maincart.svg" 
-              width="60px" height="60px" style="filter: drop-shadow(rgba(0, 0, 0, 0.04) 0px 8px 16px); cursor: pointer;">
-            </a>
-          </div>
+          <a href="#" id="main-cart">
+            <img data-v-5dd5832e="" src="./img/maincart.svg" width="60px" height="60px"
+              style="filter: drop-shadow(rgba(0, 0, 0, 0.04) 0px 8px 16px); cursor: pointer;">
+          </a>
         </div>
+      </div>
     </div>
   </section>
   <!-- 배너+상품리스트 -->
   <section id="section4">
     <article id="banner-img">
       <a href="#">
-        <img src="https://sajygdev.blob.core.windows.net/$web/open_assets/marketing/curation/%EC%A0%95%EC%9C%A1%EA%B0%81%20%EC%9D%B8%EA%B8%B0%EC%A0%9C%ED%92%88/web-curation-carousel-240912-01.png" alt="" width="1184px" height="270px">
+        <img
+          src="https://sajygdev.blob.core.windows.net/$web/open_assets/marketing/curation/%EC%A0%95%EC%9C%A1%EA%B0%81%20%EC%9D%B8%EA%B8%B0%EC%A0%9C%ED%92%88/web-curation-carousel-240912-01.png"
+          alt="" width="1184px" height="270px">
       </a>
     </article>
     <article id="banner-list">
@@ -268,60 +322,60 @@
           </a>
         </li>
 
-         <li class="slide-list">
+        <li class="slide-list">
           <a href="#" class="jsonImg">
-             <div class="list-name"></div>
+            <div class="list-name"></div>
           </a>
         </li>
 
-         <li class="slide-list">
+        <li class="slide-list">
           <a href="#" class="jsonImg">
-             <div class="list-name"></div>
+            <div class="list-name"></div>
           </a>
         </li>
-        
+
       </ul>
     </article>
   </section>
-  
+
   <section id="section2">
     <h2>곁들이면 고기 맛이 2배!</h2>
     <p>곁들임 최대 30% 할인 중</p>
-        <ul>
-            <li class="slide-list">
-              <a href="#" class="jsonImg2">
-                <div class="list-name2"></div>
-              </a>
-            </li>
+    <ul>
+      <li class="slide-list">
+        <a href="#" class="jsonImg2">
+          <div class="list-name2"></div>
+        </a>
+      </li>
 
-            <li class="slide-list">
-              <a href="#" class="jsonImg2">
-                <div class="list-name2"></div>
-              </a>
-            </li>
+      <li class="slide-list">
+        <a href="#" class="jsonImg2">
+          <div class="list-name2"></div>
+        </a>
+      </li>
 
-            <li class="slide-list">
-              <a href="#" class="jsonImg2">
-                <div class="list-name2"></div>
-              </a>
-            </li>
+      <li class="slide-list">
+        <a href="#" class="jsonImg2">
+          <div class="list-name2"></div>
+        </a>
+      </li>
 
-            <li class="slide-list">
-              <a href="#" class="jsonImg2">
-                <div class="list-name2"></div>
-              </a>
-            </li>
+      <li class="slide-list">
+        <a href="#" class="jsonImg2">
+          <div class="list-name2"></div>
+        </a>
+      </li>
 
-          </ul>
+    </ul>
   </section>
   <section id="section5">
     <div class="section5_banner">
-        <img src="./img/section5_banner_icon2.png" alt="">
-        <div>
-          <p>친구 초대 이벤트</p>
-          <h3>친구 초대하고 5천원 적립금 받으세요!</h3>
-        </div>
-        <button type="submit">바로가기</button>
+      <img src="./img/section5_banner_icon2.png" alt="">
+      <div>
+        <p>친구 초대 이벤트</p>
+        <h3>친구 초대하고 5천원 적립금 받으세요!</h3>
+      </div>
+      <button type="submit">바로가기</button>
     </div>
   </section>
 
@@ -342,7 +396,7 @@
 
       <article id="footer-main-info">
         <img src="./img/footer_logo.png" alt="">
-        <span>(주)정육각  대표이사: 김재연  |  주소: 경기도 김포시 고촌읍 아라육로57번길 126</span>
+        <span>(주)정육각 대표이사: 김재연 | 주소: 경기도 김포시 고촌읍 아라육로57번길 126</span>
         <span>사업자등록번호 : 224-87-00271 <a href="#" target="blank">[조회]</a> | 통신판매업신고번호: 2021-경기김포-0668</span>
         <span>개인정보관리책임자: 박준태(privacy@yookgak.com)</span>
         <p>© 2021 Jeongyookgak Inc. All rights reserved.</p>
@@ -351,4 +405,5 @@
     </section>
   </footer>
 </body>
+
 </html>
