@@ -1,0 +1,20 @@
+.swiper-button-next:after{
+  font-family: swiper-icons;
+  font-size: var(--swiper-navigation-size);
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
+.swiper-button-next {
+  right: 100px !important;
+}
+.swiper-button-prev {
+  left: 100px !important;
+}
+.swiper-button-next, .swiper-button-prev{
+  background-color: rgba(0, 0, 0, .32);
+  width: 56px !important; height: 56px !important; 
+  color: #ffffff !important;
+  border-radius: 9999px;
+}

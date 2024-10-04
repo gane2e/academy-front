@@ -1,0 +1,28 @@
+[{
+  "url" : "./img/icon1.png",
+  "name" : "돼지"
+},{
+  "url" : "./img/icon2.png",
+  "name" : "소"
+},{
+  "url" : "./img/icon3.png",
+  "name" : "닭"
+},{
+  "url" : "./img/icon4.png",
+  "name" : "수산"
+},{
+  "url" : "./img/icon5.png",
+  "name" : "밀키트"
+},{
+  "url" : "./img/icon6.png",
+  "name" : "우유/달걀"
+},{
+  "url" : "./img/icon7.png",
+  "name" : "육가공"
+},{
+  "url" : "./img/icon8.png",
+  "name" : "곁들임"
+},{
+  "url" : "./img/icon9.png",
+  "name" : "채소"
+}]
